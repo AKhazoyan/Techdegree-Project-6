@@ -77,7 +77,7 @@ function checkWin() {
 //Run game - and update missed counter
 keyboard.addEventListener('click', function(event) {
     let output = checkLetter(event.target);
-    if (output == null) {
+    if (output == null && event.target.tagName.toLowerCase() === 'button') {
         missed += 1;
         document.querySelectorAll('.tries img')[missed - 1].src = 'images/lostHeart.png';
     }
