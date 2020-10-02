@@ -74,6 +74,7 @@ function checkWin() {
         startOverlay.style.display = 'flex';
         startOverlay.className = 'lose';
         startGame.innerHTML = 'You lost.';
+        startGame.style.backgroundColor = 'white';
         document.querySelector('.btn__replay').style.display = 'block';
     } else if (document.querySelectorAll('.letter').length === document.querySelectorAll('.show').length) {
         startOverlay.style.display = 'flex';

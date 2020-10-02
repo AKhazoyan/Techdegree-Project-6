@@ -164,6 +164,7 @@ button {
 
 .btn__replay {
   display: none;
+  background: #FFF;
 }
 
 /* Overlay */
