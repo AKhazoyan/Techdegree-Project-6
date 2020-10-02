@@ -11,7 +11,11 @@ const phrases = [
     "elephant in the room",
     "needle in a haystack",
     "head over heels",
-    "on the same page"
+    "on the same page",
+    "the best of both worlds",
+    "see eye to eye",
+    "once in a blue moon",
+    "a piece of cake"
 ];
 
 //Hide start overlay screen when button is clicked
@@ -21,7 +25,7 @@ startGame.addEventListener('click', function(){
 
 //Random phrase generator to guess
 function getRandomPhraseAsArray(){
-    let i = Math.floor((Math.random() * 4));
+    let i = Math.floor((Math.random() * 8));
     return Array.from(phrases[i]);    
 };
 
@@ -52,10 +56,15 @@ function checkLetter(buttonClicked) {
             letters[i].classList.add('show');
             buttonClicked.className = 'chosen';
             buttonClicked.disabled = true;
-            letterFound = buttonClicked.innerHTML;
-            result = true;
+            result = true;            
+        } 
+
+        if (buttonClicked.className !== 'chosen') {
+            buttonClicked.className = 'wrong';
+            buttonClicked.disabled = true;
         }
-    } 
+    }
+
     return result;
 }
 
@@ -76,23 +85,26 @@ function checkWin() {
 
 //Run game - and update missed counter
 keyboard.addEventListener('click', function(event) {
-    let output = checkLetter(event.target);
-    if (output == null && event.target.tagName.toLowerCase() === 'button') {
-        missed += 1;
-        document.querySelectorAll('.tries img')[missed - 1].src = 'images/lostHeart.png';
+    if (event.target.tagName.toLowerCase() === 'button') {
+        let output = checkLetter(event.target);
+        if (output == null) {
+            missed += 1;
+            document.querySelectorAll('.tries img')[missed - 1].src = 'images/lostHeart.png';
+        }
+        checkWin();
     }
-    checkWin();
 });
 
 //Restart game
 restartGame.addEventListener('click', function resetGame() {
-    let shownButtons = document.querySelectorAll('.chosen');
+    let shownButtons = document.querySelectorAll('button');
     let hearts = document.querySelectorAll('.tries img');
     startOverlay.style.display = 'none';
     document.querySelector('ul').innerHTML = '';
     addPhraseToDisplay();
     for (let i = 0; i < shownButtons.length; i++) {
         shownButtons[i].classList.remove('chosen');
+        shownButtons[i].classList.remove('wrong');
         shownButtons[i].disabled = false;
     }
     for (let i = 0; i < hearts.length; i++) {

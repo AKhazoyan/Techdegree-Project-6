@@ -27,6 +27,38 @@ body {
   flex-direction: column;
   display: flex;
   height: 100vh;
+  margin: 0;
+}
+
+.portfolioLinkHeader {
+  background-color: #CD5C5C;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  z-index: 10;
+}
+
+#profileProjectName {
+  font-weight: bold;
+}
+
+.portfolioLink {
+  color: white;
+  display: inline-block;
+  border-bottom: 1px solid white;
+  text-decoration: none;
+}
+
+.portfolioLink:hover {
+  border-color: black;
+}
+
+.portfolioLinkHeader a:hover {
+  color: black;
+}
+
+.portfolioLinkHeader p{
+  margin: 0;
 }
 
 li, ol, ul {
@@ -110,14 +142,22 @@ button {
   background: var(--color-neutral);
   border-radius: 5px;
   font-size: var(--font-size-medium);
-  color: #FFFFFF;
+  color: #FFF;
+}
+
+.wrong {
+  background: var(--color-lose);
+  border-radius: 5px;
+  font-size: var(--font-size-medium);
+  color: #FFF;
 }
 
 .btn__reset,
 .btn__replay {
   padding: 8px;
   margin: 50px auto;
-  background: #FFFFFF;
+  background: var(--color-win);
+  color: #FFF;
   border-radius: 5px;
   font-size: var(--font-size-medium);
 }
@@ -132,7 +172,7 @@ button {
   display: flex;
   flex-direction: column;
   position: fixed;
-  color: #FFFFFF;
+  color: #FFF;
   justify-content: center;
   top: 0;
   bottom: 0;
@@ -149,16 +189,13 @@ button {
   background-color: var(--color-start);
 }
 
-.start a {
-  color: var(--color-win);
-}
-
 .win {
   background-color: var(--color-win);
 }
 
 .win a {
   color: var(--color-win);
+  background-color: #FFF;
 }
 
 .lose {
