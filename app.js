@@ -74,12 +74,14 @@ function checkWin() {
         startOverlay.style.display = 'flex';
         startOverlay.className = 'lose';
         startGame.innerHTML = 'You lost.';
+        startGame.style.cursor = "default";
         startGame.style.backgroundColor = 'white';
         document.querySelector('.btn__replay').style.display = 'block';
     } else if (document.querySelectorAll('.letter').length === document.querySelectorAll('.show').length) {
         startOverlay.style.display = 'flex';
         startOverlay.className = 'win';
         startGame.innerHTML = 'You Won!';
+        startGame.style.cursor = "default";
         document.querySelector('.btn__replay').style.display = 'block';
     }
 }
